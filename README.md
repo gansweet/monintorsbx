@@ -6,7 +6,7 @@
     - 需要设置以下变量来配置 cfmonitor.sh 自动启动：
     
 ---
-    ```
+    
     ### 脚本,环境变量名,作用,必需性（自动安装）,示例值
   - cfmonitor,CF_WORKER_URL,Worker URL (-u),YES,https://monitor.domain.com
   
@@ -29,7 +29,7 @@
   - cloudsbx,agk,ARGO Auth (对应 ARGO_AUTH),NO,your_argo_token
   
   - (其他所有 cloudsbx.sh 中的变量),,,NO,
-    ```
+    
 ---
 
   2. 部署和运行示例
