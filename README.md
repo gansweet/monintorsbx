@@ -6,7 +6,7 @@
     - 需要设置以下变量来配置 cfmonitor.sh 自动启动：
     
 ---
-    ### 脚本,环境变量名,作用,必需性（自动安装）,示例值
+  ### 脚本,环境变量名,作用,必需性（自动安装）,示例值
   - cfmonitor,CF_WORKER_URL,Worker URL (-u),YES,https://monitor.domain.com
   
   - cfmonitor,CF_SERVER_ID,服务器 ID (-s),YES,server-001
