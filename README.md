@@ -3,22 +3,24 @@
 
 # 📜 操作步骤和环境变量列表
  1. 环境变量配置列表
-    需要设置以下变量来配置 cfmonitor.sh 自动启动：
+    -需要设置以下变量来配置 cfmonitor.sh 自动启动：
     
+---
     ```
-    脚本,环境变量名,作用,必需性（自动安装）,示例值
-  cfmonitor,CF_WORKER_URL,Worker URL (-u),YES,https://monitor.domain.com
-  cfmonitor,CF_SERVER_ID,服务器 ID (-s),YES,server-001
-  cfmonitor,CF_API_KEY,API 密钥/Token (-k),YES,1040a7f95b03...
-  cfmonitor,CF_INTERVAL,监控间隔（秒） (-i),NO,60
-  cloudsbx,vlpt,VLESS/Reality 端口,YES (至少设置一个端口),443
-  cloudsbx,vmpt,VMESS/WS 端口,NO,8080
-  cloudsbx,hypt,Hysteria2 端口,NO,40000
-  cloudsbx,uuid,UUID,NO,a1b2c3d4-e5f6...
-  cloudsbx,agn,ARGO 域名 (对应 ARGO_DOMAIN),NO,argo.domain.com
-  cloudsbx,agk,ARGO Auth (对应 ARGO_AUTH),NO,your_argo_token
-  (其他所有 cloudsbx.sh 中的变量),,,NO,
+    ### 脚本,环境变量名,作用,必需性（自动安装）,示例值
+  -cfmonitor,CF_WORKER_URL,Worker URL (-u),YES,https://monitor.domain.com
+  -cfmonitor,CF_SERVER_ID,服务器 ID (-s),YES,server-001
+  -cfmonitor,CF_API_KEY,API 密钥/Token (-k),YES,1040a7f95b03...
+  -cfmonitor,CF_INTERVAL,监控间隔（秒） (-i),NO,60
+  -cloudsbx,vlpt,VLESS/Reality 端口,YES (至少设置一个端口),443
+  -cloudsbx,vmpt,VMESS/WS 端口,NO,8080
+  -cloudsbx,hypt,Hysteria2 端口,NO,40000
+  -cloudsbx,uuid,UUID,NO,a1b2c3d4-e5f6...
+  -cloudsbx,agn,ARGO 域名 (对应 ARGO_DOMAIN),NO,argo.domain.com
+  -cloudsbx,agk,ARGO Auth (对应 ARGO_AUTH),NO,your_argo_token
+  -(其他所有 cloudsbx.sh 中的变量),,,NO,
     ```
+---
 
   2. 部署和运行示例
     现在，用户可以直接通过环境变量来配置并启动服务，无需进入容器执行交互式命令。
