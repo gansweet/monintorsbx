@@ -17,9 +17,28 @@ RUN mkdir -p /app/.cf-vps-monitor/logs && \
     chmod -R 777 /app/.cf-vps-monitor
 
 EXPOSE 7860
+
+ENV vlpt=""
+ENV vmpt=""
+ENV hypt="${HYPT:-}"
+ENV tupt="${TUPT:-}"
+ENV xhpt="${XHPT:-}"
+ENV vxpt="${VXPT:-}"
+ENV anpt="${ANPT:-}"
+ENV arpt="${ARPT:-}"
+ENV sspt="${SSPT:-}"
+ENV sopt="${SOPT:-}"
+ENV warp="${WARP:-}"
+ENV argo="${ARGO:-}"
+ENV agn="${ARGO_DOMAIN:-}"
+ENV agk="${ARGO_AUTH:-}"
+ENV uuid=""
+
 ENV API_KEY=""
 ENV SERVER_ID=""
 ENV WORKER_URL=""
+
+
 
 EXPOSE 7860 80 443 8080 8443 2053 2083 2087 2096 3000
 
