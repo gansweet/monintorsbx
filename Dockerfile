@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y curl bash procps iproute2 cron && rm -r
 
 COPY cfmonitor.sh /app/cfmonitor.sh
 COPY cloudsbx.sh /app/cloudsbx.sh
-COPY start.sh /app/entrypoint.sh
+COPY entrypoint.sh /app/entrypoint.sh
 
 RUN chmod +x /app/cfmonitor.sh /app/entrypoint.sh /app/cloudsbx.sh && chmod -R 777 /app
 RUN mkdir -p /app/.cf-vps-monitor/logs && \
