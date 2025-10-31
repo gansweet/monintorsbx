@@ -3,7 +3,7 @@
 - vps监控和面板来自https://github.com/kadidalax/cf-vps-monitor（面板可部署cloudflare)
 ##  monintorsbx 
 #  镜像 ghcr.io/gansweet/monintorsbx:latest
-
+## 服务器填写镜像地址后，填写环境变量，部署即可。在logs查看节点信息和vps监控运行信息。vps面板可以查看对应cloud server 状态。
 
 # cloudsbx   
 ## argosbx，填写环境变量，参考下面变量，来选择不同协议,安装对应的proxy。
