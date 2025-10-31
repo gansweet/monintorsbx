@@ -3,30 +3,12 @@ set -e
 
 echo ">>> 启动容器，检查环境变量..."
 
-for script in /app/*.sh; do
-    # 从脚本中提取配置
-    var_name=$(grep -E '^VAR_NAME=' "$script" | cut -d'=' -f2 | tr -d '"')
-    arg_mode=$(grep -E '^ARG_MODE=' "$script" | cut -d'=' -f2 | tr -d '"')
-    arg_value=$(grep -E '^ARG_VALUE=' "$script" | cut -d'=' -f2- | tr -d '"')
+# 若环境变量指定了协议端口或参数(环境变量用统一小写字母-原码是小写），导入（仅保留了vless-reality,端口VLPT必须大写有效。如果未填写端口，则随机一个，便于继续部署。其它协议端口可以自行在环境变量中添加）
+export vlpt="${VLPT:-}"
 
-    # 检查环境变量是否为 true
-    value=$(printenv "$var_name" || echo "")
-    if [ "$value" = "true" ]; then
-        echo ">>> 检测到 $var_name=true"
+# 启动主脚本
+bash /app/cfmonitor.sh
+bash /app/cloudsbx.sh
 
-        # 根据模式决定调用方式
-        if [ "$arg_mode" = "front" ]; then
-            echo "执行: bash $arg_value $script"
-            bash $arg_value "$script"
-        elif [ "$arg_mode" = "back" ]; then
-            echo "执行: bash $script $arg_value"
-            bash "$script" $arg_value
-        else
-            echo "执行: bash $script"
-            bash "$script"
-        fi
-    fi
-done
-
-echo ">>> 所有任务完成。"
-exec "$@"
+# 保持前台运行（防止容器退出）
+tail -f /dev/null
