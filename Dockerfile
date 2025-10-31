@@ -1,16 +1,15 @@
-# 使用轻量级的 Alpine Linux 作为基础镜像
-FROM alpine:latest
+FROM debian:bookworm-slim
 
-# 安装 bash 和 curl (Bash是必需的运行时环境)
-
-RUN apk update && \
-    apk add --no-cache bash curl wget
+# 安装必要依赖
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl wget bash jq ca-certificates procps iproute2 openssl cron \
+ && rm -rf /var/lib/apt/lists/*
 
 # 设置工作目录
 WORKDIR /app
 
 # 将本地脚本复制到工作目录 /app/
-# ⚠️ 修正 1: 所有文件复制到 /app/
+
 COPY cfmonitor.sh /app/cfmonitor.sh
 COPY cloudsbx.sh /app/cloudsbx.sh
 
