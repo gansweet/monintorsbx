@@ -43,4 +43,4 @@ ENV WORKER_URL=""
 EXPOSE 7860 80 443 8080 8443 2053 2083 2087 2096 3000
 
 # 默认启动命令
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
