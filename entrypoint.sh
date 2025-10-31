@@ -5,7 +5,7 @@ echo ">>> 启动 Cloudsbx 容器安装环境..."
 echo "当前时间：$(date)"
 
 # 若环境变量指定了协议端口或参数(环境变量用统一小写字母-原码是小写），导入（仅保留了vless-reality,端口VLPT必须大写有效。如果未填写端口，则随机一个，便于继续部署。其它协议端口可以自行在环境变量中添加）
-export vlpt="${VLPT:-}"
+# export vlpt="${VLPT:-}"
 # export vmpt="${VMPT:-}"
 # export hypt="${HYPT:-}"
 # export tupt="${TUPT:-}"
