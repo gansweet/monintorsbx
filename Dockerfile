@@ -18,7 +18,7 @@ RUN mkdir -p /app/.cf-vps-monitor/logs && \
 
 EXPOSE 7860
 
-ENV vlpt=""
+# ENV vlpt=""
 # ENV vmpt=""
 # ENV hypt=""
 # ENV tupt=""
