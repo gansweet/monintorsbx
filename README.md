@@ -1,5 +1,5 @@
-
-#  monintorsbx 
+# 节点安装+VPS监控（节点安装程序来自https://github.com/yonggekkk/argosbx， vps监控和面板来自https://github.com/kadidalax/cf-vps-monitor）
+##  monintorsbx 
 #  镜像 ghcr.io/gansweet/monintorsbx:latest
 
 
@@ -44,7 +44,7 @@
 
 ```
 - 变量名,描述,示例值,对应 cfmonitor.sh 默认项
-- WORKER_URL,必需，数据上报接口。 Cloudflare Worker 的 URL 地址。,https://my-monitor.yourdomain.com/,DEFAULT_WORKER_URL
+- WORKER_URL,必需，数据上报接口。 Cloudflare Worker 的 URL 地址。https://my-monitor.yourdomain.com/,DEFAULT_WORKER_URL
 - SERVER_ID,必需，节点标识。 当前 VPS/服务器的唯一标识符。,my-vps-01,DEFAULT_SERVER_ID
 - API_KEY,必需，授权密钥。 用于授权的 API Key 或密钥。,your_secret_api_key_12345,DEFAULT_API_KEY
 - INTERVAL  检测间隔秒 上报间隔会自动从服务器获取，无需手动设置
