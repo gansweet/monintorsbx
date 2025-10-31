@@ -45,7 +45,7 @@ if [ ! -f "$LOG_FILE" ]; then
 fi
 
 # 持续输出日志，防止容器退出
-# echo "正在持续监控日志输出..."
+echo "正在持续监控日志输出..."
 # tail -F "$LOG_FILE"
 # 保持前台运行（防止容器退出）
 tail -f /dev/null
