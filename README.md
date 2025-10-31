@@ -1,4 +1,6 @@
-# 节点安装+VPS监控（节点安装程序来自https://github.com/yonggekkk/argosbx， vps监控和面板来自https://github.com/kadidalax/cf-vps-monitor）
+# 节点安装+VPS监控(镜像），便于容器安装。
+- 节点安装程序来自https://github.com/yonggekkk/argosbx
+- vps监控和面板来自https://github.com/kadidalax/cf-vps-monitor（面板可部署cloudflare)
 ##  monintorsbx 
 #  镜像 ghcr.io/gansweet/monintorsbx:latest
 
