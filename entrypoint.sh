@@ -7,8 +7,8 @@ echo ">>> 启动容器，检查环境变量..."
 export vlpt="${VLPT:-}"
 
 # 启动主脚本
-bash /app/cfmonitor.sh
-bash /app/cloudsbx.sh
+bash /usr/local/bin/cfmonitor.sh
+bash /usr/local/bin/cloudsbx.sh
 
 # 保持前台运行（防止容器退出）
 tail -f /dev/null
