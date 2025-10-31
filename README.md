@@ -2,68 +2,9 @@
 #  monintorsbx 
 #  镜像 ghcr.io/gansweet/monintorsbx:latest
 
-## 安装argosb和cf_monitor的镜像。
 
-# 📜 操作步骤和环境变量列表
- 1. 环境变量配置列表
-    - 需要设置以下变量来配置 cfmonitor.sh 自动启动：
-    
----
-  ### 脚本,环境变量名,作用,必需性（自动安装）,示例值
-  - cfmonitor,CF_WORKER_URL,Worker URL (-u),YES,https://monitor.domain.com
-  
-  - cfmonitor,CF_SERVER_ID,服务器 ID (-s),YES,server-001
-  
-  - cfmonitor,CF_API_KEY,API 密钥/Token (-k),YES,1040a7f95b03...
-  
-  - cfmonitor,CF_INTERVAL,监控间隔（秒） (-i),NO,60
-  
-  - cloudsbx,vlpt,VLESS/Reality 端口,YES (至少设置一个端口),443
-  
-  - cloudsbx,vmpt,VMESS/WS 端口,NO,8080
-  
-  - cloudsbx,hypt,Hysteria2 端口,NO,40000
-  
-  - cloudsbx,uuid,UUID,NO,a1b2c3d4-e5f6...
-  
-  - cloudsbx,agn,ARGO 域名 (对应 ARGO_DOMAIN),NO,argo.domain.com
-  
-  - cloudsbx,agk,ARGO Auth (对应 ARGO_AUTH),NO,your_argo_token
-  
-  - (其他所有 cloudsbx.sh 中的变量),,,NO,
-    
----
-
-  2. 部署和运行示例
-    现在，用户可以直接通过环境变量来配置并启动服务，无需进入容器执行交互式命令。
-    A. 自动配置并启动 cfmonitor 服务
-    在 Docker 启动命令中传入环境变量：
-
-   ```
-   docker run -d \
-  --name dual-service-tool \
-  -e CF_WORKER_URL="https://your.worker.url" \
-  -e CF_SERVER_ID="your_server_id" \
-  -e CF_API_KEY="your_api_key_token" \
-  -e vlpt="443" \
-  -e uuid="your-uuid-here" \
-  ghcr.io/gansweet/monintorsbx:latest
- ```
-
-  B. 手动执行 cloudsbx.sh 的命令
-  
-  ```
-  docker run --rm ghcr.io/gansweet/monintorsbx:latest cloudsbx rep
-  ```
-
-  C. 默认显示菜单/帮助
-  如果未传入任何参数或环境变量，容器将退出并显示帮助信息：
-
-  ```
-  docker run --rm ghcr.io/gansweet/monintorsbx:latest
-  ```
-  
-# argosbx
+# cloudsbx   
+## argosbx，填写环境变量，参考下面变量，来选择不同协议,安装对应的proxy。
 
 ----------------------------------------------------------
 
@@ -94,3 +35,42 @@
 | 21、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
 
 ------------------------------------------------------------------
+
+# VPS_monitor. VPS监控面板可以部署到cloudflare上，仓库地址： https://github.com/gansweet/cf-vps-monitor
+## Docker Deploy容器所需的环境变量，不填写环境变量，则不安装monitor.
+    
+---
+- 在容器平台的变量界面中填写以下关键环境变量。这些变量会被 entrypoint.sh 读取并用于生成配置文件：
+
+```
+- 变量名,描述,示例值,对应 cfmonitor.sh 默认项
+- WORKER_URL,必需，数据上报接口。 Cloudflare Worker 的 URL 地址。,https://my-monitor.yourdomain.com/,DEFAULT_WORKER_URL
+- SERVER_ID,必需，节点标识。 当前 VPS/服务器的唯一标识符。,my-vps-01,DEFAULT_SERVER_ID
+- API_KEY,必需，授权密钥。 用于授权的 API Key 或密钥。,your_secret_api_key_12345,DEFAULT_API_KEY
+- INTERVAL  检测间隔秒 上报间隔会自动从服务器获取，无需手动设置
+```
+## 参数从安装的面板获取。
+---
+### 一键安装参数:
+ - -i, --install           一键安装模式
+
+ - -s, --server-id ID      服务器ID
+
+ - -k, --api-key KEY       API密钥
+
+ - -u, --worker-url URL    Worker地址
+
+### 有些容器启动脚本本身执行完就退出了，而后台进程在容器里独立运行，但容器管理平台会认为主进程已经结束，所以状态可能一直是 starting 或立即 exited。事实已经在日志守护。正常的，就是前台无法监控到。
+
+---
+### 守护模式 vs 前台模式
+
+| 特性        | 守护模式 (Daemon)              | 前台模式         |
+| --------- | -------------------------- | ------------ |
+| 进程位置      | 后台 fork                    | 前台运行         |
+| 输出        | 写日志文件                      | 控制台可见        |
+| Docker 状态 | 容器可能 `starting` 或 `exited` | 容器 `running` |
+| 适用场景      | 长期服务/系统守护                  | 容器运行、调试      |
+---
+
+
