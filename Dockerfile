@@ -26,6 +26,3 @@ RUN chmod +x /app/entrypoint.sh
 
 # 设置容器的默认入口点
 ENTRYPOINT ["/app/entrypoint.sh"]
-
-# 默认命令 (如果没有在 docker run 中指定其他命令)
-CMD ["menu"]
